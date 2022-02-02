@@ -3,6 +3,7 @@ const ingredientslist = document.getElementById('activeIngredients');
 const remove = document.getElementById('remove');
 
 const save = document.getElementById('save-meal');
+const mealList = document.getElementById('saved-meals');
 
 let ingredients = [];
 
@@ -17,7 +18,7 @@ form.addEventListener('submit', (e) => {
     ingredients.push(ingredient);
     form.reset();
     renderIngredients();
-    console.log(ingredients);
+    // console.log(ingredients);
 });
 
 function renderIngredients() {
@@ -40,6 +41,20 @@ remove.addEventListener('click', () => {
 });
 
 save.addEventListener('click', () => {
-    const mealname = document.getElementById('meal-name');
-    console.log(mealname.value);
+    const mealName = document.getElementById('meal-name');
+    const li = document.createElement('li');
+    li.textContent = `${mealName.value}, ${ingredients.length} ingredients`;
+    mealList.append(li);
+    // console.log(li);
+    // const numOfIngredients = ingredients.length;
+    // console.log(mealName.value, numOfIngredients);
+    // renderMeal(mealName.value, ingredients.length);
+
 });
+
+// function renderMeal(item1, item2) {
+//     const li = document.createElement('li');
+//     li.textContent = `${item1}, ${item2} ingredients`;
+//     console.log(li);
+//     return li;
+// }
