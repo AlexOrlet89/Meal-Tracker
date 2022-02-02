@@ -20,7 +20,7 @@ form.addEventListener('submit', (e) => {
         measurement: formData.get('measurement')
     }; 
     ingredients.push(ingredient);
-    // form.reset();
+    form.reset();
     renderIngredients();
     console.log(ingredients);
 });
@@ -47,6 +47,7 @@ save.addEventListener('click', () => {
     meals.push(meal);
     console.log(meals);
     renderMeals();
+    mealName.value = '';
     // renderMeal();
     // mealList.append(li);
     // console.log(li);

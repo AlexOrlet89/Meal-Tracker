@@ -39,7 +39,7 @@ test('renderMeal returns HTML for meal data', (expect) => {
     
     //Act 
     // Call the function you're testing and set the result to a const
-    const actual = renderMeal({ mealName: 'Ice Water', numOfIngredients: 2});
+    const actual = renderMeal({ mealName: 'Ice Water', numOfIngredients: 2 });
 
     //Expect
     // Make assertions about what is expected versus the actual result
