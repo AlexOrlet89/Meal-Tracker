@@ -13,5 +13,20 @@ form.addEventListener('submit', (e) => {
     }; 
     ingredients.push(ingredient);
     form.reset();
+    renderIngredient();
     console.log(ingredients);
 });
+
+function renderIngredient() {
+    ingredientslist.textContent = '';
+    for (let ingredient of ingredients) {
+        const li = renderIngredients(ingredient);
+        ingredientslist.append(li);
+    }
+}
+
+function renderIngredients(item) {
+    const li = document.createElement('li');
+    li.textContent = `${item.quantity} ${item.measurement.value} of ${item.ingredient}`;
+    return li;
+}
