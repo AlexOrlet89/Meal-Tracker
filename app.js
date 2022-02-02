@@ -1,5 +1,6 @@
 const form = document.getElementById('add-ingredients');
 const ingredientslist = document.getElementById('activeIngredients');
+const remove = document.getElementById('remove');
 
 let ingredients = [];
 
@@ -13,20 +14,25 @@ form.addEventListener('submit', (e) => {
     }; 
     ingredients.push(ingredient);
     form.reset();
-    renderIngredient();
+    renderIngredients();
     console.log(ingredients);
 });
 
-function renderIngredient() {
+function renderIngredients() {
     ingredientslist.textContent = '';
     for (let ingredient of ingredients) {
-        const li = renderIngredients(ingredient);
+        const li = renderIngredient(ingredient);
         ingredientslist.append(li);
     }
 }
 
-function renderIngredients(item) {
+function renderIngredient(item) {
     const li = document.createElement('li');
     li.textContent = `${item.quantity} ${item.measurement.value} of ${item.ingredient}`;
     return li;
 }
+
+remove.addEventListener('click', () => {
+    ingredients.pop();
+    renderIngredients();
+}) ;
