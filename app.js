@@ -2,6 +2,8 @@ const form = document.getElementById('add-ingredients');
 const ingredientslist = document.getElementById('activeIngredients');
 const remove = document.getElementById('remove');
 
+const save = document.getElementById('save-meal');
+
 let ingredients = [];
 
 form.addEventListener('submit', (e) => {
@@ -35,4 +37,9 @@ function renderIngredient(item) {
 remove.addEventListener('click', () => {
     ingredients.pop();
     renderIngredients();
-}) ;
+});
+
+save.addEventListener('click', () => {
+    const mealname = document.getElementById('meal-name');
+    console.log(mealname.value);
+});
