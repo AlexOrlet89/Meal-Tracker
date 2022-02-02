@@ -1,3 +1,5 @@
+import { renderIngredient, renderMeal } from './utils.js';
+
 const form = document.getElementById('add-ingredients');
 const ingredientslist = document.getElementById('activeIngredients');
 const remove = document.getElementById('remove');
@@ -31,11 +33,6 @@ export function renderIngredients() {
     }
 }
 
-export function renderIngredient(item) {
-    const li = document.createElement('li');
-    li.textContent = `${item.quantity} ${item.measurement} of ${item.ingredient}`;
-    return li;
-}
 
 remove.addEventListener('click', () => {
     ingredients.pop();
@@ -68,11 +65,7 @@ export function renderMeals() {
 
 }
 
-export function renderMeal(item) {
-    const li = document.createElement('li');
-    li.textContent = `${item.mealName}, ${item.numOfIngredients} ingredients`;
-    return li;
-}
+
 
 // li.textContent = `${item1}, ${item2} ingredients`;
 // console.log(li);
