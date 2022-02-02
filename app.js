@@ -4,8 +4,10 @@ const remove = document.getElementById('remove');
 
 const save = document.getElementById('save-meal');
 const mealList = document.getElementById('saved-meals');
+const mealName = document.getElementById('meal-name');
 
 let ingredients = [];
+let meals = [];
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -16,12 +18,12 @@ form.addEventListener('submit', (e) => {
         measurement: formData.get('measurement')
     }; 
     ingredients.push(ingredient);
-    form.reset();
+    // form.reset();
     renderIngredients();
-    // console.log(ingredients);
+    console.log(ingredients);
 });
 
-function renderIngredients() {
+export function renderIngredients() {
     ingredientslist.textContent = '';
     for (let ingredient of ingredients) {
         const li = renderIngredient(ingredient);
@@ -29,9 +31,9 @@ function renderIngredients() {
     }
 }
 
-function renderIngredient(item) {
+export function renderIngredient(item) {
     const li = document.createElement('li');
-    li.textContent = `${item.quantity} ${item.measurement.value} of ${item.ingredient}`;
+    li.textContent = `${item.quantity} ${item.measurement} of ${item.ingredient}`;
     return li;
 }
 
@@ -41,20 +43,36 @@ remove.addEventListener('click', () => {
 });
 
 save.addEventListener('click', () => {
-    const mealName = document.getElementById('meal-name');
-    const li = document.createElement('li');
-    li.textContent = `${mealName.value}, ${ingredients.length} ingredients`;
-    mealList.append(li);
+    const meal = {
+        mealName: mealName.value,
+        numOfIngredients: ingredients.length
+    };
+    meals.push(meal);
+    console.log(meals);
+    renderMeals();
+    // renderMeal();
+    // mealList.append(li);
     // console.log(li);
     // const numOfIngredients = ingredients.length;
     // console.log(mealName.value, numOfIngredients);
+    // const li = document.createElement('li');
     // renderMeal(mealName.value, ingredients.length);
-
 });
 
-// function renderMeal(item1, item2) {
-//     const li = document.createElement('li');
-//     li.textContent = `${item1}, ${item2} ingredients`;
-//     console.log(li);
-//     return li;
-// }
+export function renderMeals() {
+    mealList.textContent = '';
+    for (let meal of meals) {
+        const li = renderMeal(meal);
+        mealList.append(li);
+    }
+
+}
+
+export function renderMeal(item) {
+    const li = document.createElement('li');
+    li.textContent = `${item.mealName}, ${item.numOfIngredients} ingredients`;
+    return li;
+}
+
+// li.textContent = `${item1}, ${item2} ingredients`;
+// console.log(li);
