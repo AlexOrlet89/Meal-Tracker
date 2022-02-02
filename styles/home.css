@@ -1,1 +1,32 @@
-/* add home page styles here */
+h1 {
+    text-align: center;
+}
+
+.top-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.ingredients {
+    border: rgb(43, 255, 0) 2px solid;
+    display: flex;
+    flex-direction: row;
+}
+
+form {
+    border: rgb(0, 26, 255) 2px solid;
+    display: flex;
+    flex-direction: column;
+}
+
+.activeIngredients {
+    display: flex;
+    flex-direction: column;
+    border: rgb(255, 0, 0) 2px solid;
+    justify-content: space-between;
+}
+#remove {
+    position:static;
+    border: rgb(219, 0, 0) 2px solid;
+
+}
